@@ -103,7 +103,7 @@ class TweetTableViewController: UITableViewController, UITextFieldDelegate {
         return tweets[section].count
     }
     
-    // TODO: where types of cells will go
+    
     private struct Storyboard {
         static let TweetCellIdentifier = "Tweet"
     }
