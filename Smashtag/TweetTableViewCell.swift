@@ -22,6 +22,28 @@ class TweetTableViewCell: UITableViewCell {
         }
     }
     
+    // apply formatting to the desired string and return string
+    private func applyTweetTextFormatting(tweet: Twitter.Tweet, text: String) -> NSMutableAttributedString {
+        let attributedText = NSMutableAttributedString(string: text)
+        
+        // hashtag formats
+        for hashtag in tweet.hashtags {
+            attributedText.addAttribute(NSForegroundColorAttributeName, value: UIColor.grayColor(), range: hashtag.nsrange)
+        }
+        
+        // url formats
+        for url in tweet.urls {
+            attributedText.addAttribute(NSForegroundColorAttributeName, value: UIColor.brownColor(), range: url.nsrange)
+        }
+        
+        // user mentions
+        for userMention in tweet.userMentions {
+            attributedText.addAttribute(NSForegroundColorAttributeName, value: UIColor.blueColor(), range: userMention.nsrange)
+        }
+        
+        return attributedText
+    }
+    
     private func updateUI() {
         
         // reset any existing tweet information
@@ -33,12 +55,12 @@ class TweetTableViewCell: UITableViewCell {
         // load new information from our tweet (if any)
         if let tweet = self.tweet
         {
-            tweetTextLabel?.text = tweet.text
-            if tweetTextLabel?.text != nil  {
-                for _ in tweet.media {
-                    tweetTextLabel.text! += " 📷"
-                }
+            var text = tweet.text
+            for _ in tweet.media {
+                text += " 📷"
             }
+            
+            tweetTextLabel.attributedText = applyTweetTextFormatting(tweet, text: text)
             
             tweetScreenNameLabel?.text = "\(tweet.user)" // tweet.user.description
             
@@ -60,11 +82,11 @@ class TweetTableViewCell: UITableViewCell {
     }
     
     /*
-    override func setSelected(selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-        
-        // Configure the view for the selected state
-    }
-    */
+     override func setSelected(selected: Bool, animated: Bool) {
+     super.setSelected(selected, animated: animated)
+     
+     // Configure the view for the selected state
+     }
+     */
     
 }
