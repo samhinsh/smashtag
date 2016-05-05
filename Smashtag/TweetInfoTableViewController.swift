@@ -40,6 +40,12 @@ class TweetInfoTableViewController: UITableViewController {
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
     }
     
+    override func viewWillAppear(animated: Bool) {
+        if let selectedRow = tableView.indexPathForSelectedRow { // deselect selected row
+            tableView.deselectRowAtIndexPath(selectedRow, animated: true)
+        }
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -101,6 +107,15 @@ class TweetInfoTableViewController: UITableViewController {
     //        return UITableViewAutomaticDimension
     //
     //    }
+    
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        if TweetTableSection(rawValue: indexPath.section) == .Urls {
+            let tweetUrl = NSURL(string: (tweet?.urls[indexPath.row].keyword)!)
+            if let url = tweetUrl {
+                UIApplication.sharedApplication().openURL(url)
+            }
+        }
+    }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         if let tableSection = TweetTableSection(rawValue: indexPath.section) {
