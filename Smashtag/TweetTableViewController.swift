@@ -106,6 +106,7 @@ class TweetTableViewController: UITableViewController, UITextFieldDelegate {
     
     private struct Storyboard {
         static let TweetCellIdentifier = "Tweet"
+        static let TweetInfoSegue = "Show TweetInfo"
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
@@ -133,6 +134,21 @@ class TweetTableViewController: UITableViewController, UITextFieldDelegate {
         textField.resignFirstResponder() // hide keyboard
         searchText = textField.text // do the search (working with didSet)
         return true // perform default behavior
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        
+        if let tweetInfoVC = segue.destinationViewController as? TweetInfoTableViewController {
+            if let identifier = segue.identifier {
+                switch identifier {
+                case Storyboard.TweetInfoSegue:
+                    tweetInfoVC.tweet =
+                        tweets[tableView.indexPathForSelectedRow!.section][tableView.indexPathForSelectedRow!.row]
+                    
+                default: break
+                }
+            }
+        }
     }
     
     /* Error Note:
