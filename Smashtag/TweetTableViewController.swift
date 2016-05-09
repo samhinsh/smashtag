@@ -12,7 +12,7 @@ import CoreData
 
 class TweetTableViewController: UITableViewController, UITextFieldDelegate {
     
-    var manageObjectContext: NSManagedObjectContext? =
+    var managedObjectContext: NSManagedObjectContext? =
         (UIApplication.sharedApplication().delegate as? AppDelegate)?.managedObjectContext
     
     var tweets = [Array<Twitter.Tweet>]() {
@@ -68,18 +68,31 @@ class TweetTableViewController: UITableViewController, UITextFieldDelegate {
         }
     }
     
+    // if tweet in db, does nothing; places in Core Data otherwise
     private func updateDatabase(newTweets: [Twitter.Tweet]) {
-        manageObjectContext?.performBlock {
+        managedObjectContext?.performBlock {
             // put tweets in database
             for twitterInfo in newTweets {
                 // create new, unique Tweet in database with twitter info
-                _ = Tweet.tweetWithTwitterInfo(twitterInfo, inManagedObjectContext: self.manageObjectContext!) // _ = return value, but I don't care about it (good style)
+                _ = Tweet.tweetWithTwitterInfo(twitterInfo, inManagedObjectContext: self.managedObjectContext!) // _ = return value, but I don't care about it (good style)
             }
             do {
-                try self.manageObjectContext?.save()
+                try self.managedObjectContext?.save()
             } catch let error {
                 print("Core Data Save Error: \(error)")
             }
+        }
+        printDatabaseStatistics()
+        print("Done printing database statistics")
+    }
+    
+    private func printDatabaseStatistics() {
+        managedObjectContext?.performBlock {
+            let twitterUserCount = self.managedObjectContext!.countForFetchRequest(NSFetchRequest(entityName: "TwitterUser"), error: nil)
+            print("\(twitterUserCount) TwitterUsers")
+                
+            let tweetCount = self.managedObjectContext!.countForFetchRequest(NSFetchRequest(entityName: "Tweet"), error: nil)
+            print("\(tweetCount) Tweets") // efficient way to count objects
         }
     }
     
