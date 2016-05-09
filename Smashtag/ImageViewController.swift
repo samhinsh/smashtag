@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ImageViewController: UIViewController {
+class ImageViewController: UIViewController, UIScrollViewDelegate {
     
     // if the url is set, fetch the image data at the url
     var imageURL: NSURL? {
@@ -25,6 +25,9 @@ class ImageViewController: UIViewController {
             // make the scrollView the size of the desired  image
             scrollView.contentSize = imageView.frame.size
                 // do again, to ensure the frame is size is set when this outlet is loaded
+            scrollView.delegate = self // send me (this class) any questions the scrollView might have
+            scrollView.minimumZoomScale = 1.0
+            scrollView.maximumZoomScale = 2.0
         }
     }
     
@@ -35,6 +38,12 @@ class ImageViewController: UIViewController {
                 image = UIImage(data: imageData)
             }
         }
+    }
+    
+    // MARK: - ScrollView Delegate Methods
+    
+    func viewForZoomingInScrollView(scrollView: UIScrollView) -> UIView? {
+        return imageView // which of scrollView's subviews to zoom into
     }
     
     // if an image is set, display it in a imageView, change the scrollView size
@@ -53,7 +62,6 @@ class ImageViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         scrollView.addSubview(imageView)
-
         // Do any additional setup after loading the view.
     }
 

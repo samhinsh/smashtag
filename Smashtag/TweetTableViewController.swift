@@ -77,11 +77,23 @@ class TweetTableViewController: UITableViewController, UITextFieldDelegate {
         tableView.estimatedRowHeight = tableView.rowHeight
         tableView.rowHeight = UITableViewAutomaticDimension
         
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
+        // for interacting with Model.xcdatamodeld
+        let context = (UIApplication.sharedApplication() as! AppDelegate).managedObjectContext
         
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
+//        do {
+//            try context.save()
+//        } catch let error {
+//            throw error // must say that func throws if used
+//        }
+        
+//        if let tweet = NSEntityDescription.insertNewObjectForEntityForName("Tweet", isManagedObjectContext: context) as? Tweet {
+//            tweet.text =
+//            tweet.created =
+//            tweet.tweeter =
+//            tweet.tweeter.name =
+//        }
+        
+//        context.deleteObject(tweet) // make sure no strong pointers to tweet after deletion, delete set by delete rule in attributes editor
     }
     
     override func didReceiveMemoryWarning() {

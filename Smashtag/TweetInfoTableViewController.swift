@@ -167,7 +167,6 @@ class TweetInfoTableViewController: UITableViewController {
             }
         } else if let destinationvc = segue.destinationViewController as? ImageViewController {
             if segue.identifier == Storyboard.TweetImageViewIdentifier {
-                print("Displaying full image")
                 destinationvc.imageURL = tweet?.media[(tableView.indexPathForSelectedRow?.row)!].url
             }
         }
