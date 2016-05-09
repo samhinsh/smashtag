@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C21563C31CE07A0F009277A3 /* ImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C21563C21CE07A0F009277A3 /* ImageViewController.swift */; };
 		C2FF8A111CDA6CBC009BE0CC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2FF8A101CDA6CBC009BE0CC /* AppDelegate.swift */; };
 		C2FF8A161CDA6CBC009BE0CC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C2FF8A141CDA6CBC009BE0CC /* Main.storyboard */; };
 		C2FF8A191CDA6CBC009BE0CC /* Smashtag.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = C2FF8A171CDA6CBC009BE0CC /* Smashtag.xcdatamodeld */; };
@@ -35,6 +36,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		C21563C21CE07A0F009277A3 /* ImageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageViewController.swift; sourceTree = "<group>"; };
 		C2FF8A0D1CDA6CBC009BE0CC /* Smashtag.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Smashtag.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C2FF8A101CDA6CBC009BE0CC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C2FF8A151CDA6CBC009BE0CC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -86,6 +88,7 @@
 				C2FF8A141CDA6CBC009BE0CC /* Main.storyboard */,
 				C2FF8A341CDAA650009BE0CC /* TweetInfoTableViewCells.swift */,
 				C2FF8A321CDAA619009BE0CC /* TweetInfoTableViewController.swift */,
+				C21563C21CE07A0F009277A3 /* ImageViewController.swift */,
 				C2FF8A251CDA6D18009BE0CC /* Supporting Files */,
 			);
 			path = Smashtag;
@@ -179,6 +182,7 @@
 				C2FF8A2B1CDA6E46009BE0CC /* TweetTableViewController.swift in Sources */,
 				C2FF8A351CDAA650009BE0CC /* TweetInfoTableViewCells.swift in Sources */,
 				C2FF8A191CDA6CBC009BE0CC /* Smashtag.xcdatamodeld in Sources */,
+				C21563C31CE07A0F009277A3 /* ImageViewController.swift in Sources */,
 				C2FF8A331CDAA619009BE0CC /* TweetInfoTableViewController.swift in Sources */,
 				C2FF8A111CDA6CBC009BE0CC /* AppDelegate.swift in Sources */,
 				C2FF8A311CDA8136009BE0CC /* TweetTableViewCell.swift in Sources */,

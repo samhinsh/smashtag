@@ -147,6 +147,7 @@
                                 </tableViewCellContentView>
                                 <connections>
                                     <outlet property="tweetImageView" destination="iUL-3s-scO" id="UYz-uH-tuu"/>
+                                    <segue destination="6NF-6x-cwl" kind="show" identifier="Show Full Image" id="Ajn-hH-hj7"/>
                                 </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Tweet Hashtag" textLabel="y1F-fP-Eah" detailTextLabel="6k9-0j-2OH" style="IBUITableViewCellStyleValue1" id="sLt-ka-6zV">
@@ -237,6 +238,38 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="T2b-O4-xpb" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2171" y="352"/>
+        </scene>
+        <!--Image View Controller-->
+        <scene sceneID="Wyw-83-DQs">
+            <objects>
+                <viewController id="6NF-6x-cwl" customClass="ImageViewController" customModule="Smashtag" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Kzg-1I-Eod"/>
+                        <viewControllerLayoutGuide type="bottom" id="qHt-QR-CUR"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="gBZ-VZ-a1N">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="frO-ES-9HG">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                            </scrollView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="frO-ES-9HG" firstAttribute="top" secondItem="gBZ-VZ-a1N" secondAttribute="top" id="061-zi-RhX"/>
+                            <constraint firstItem="frO-ES-9HG" firstAttribute="bottom" secondItem="qHt-QR-CUR" secondAttribute="top" id="9H6-qt-ywA"/>
+                            <constraint firstItem="frO-ES-9HG" firstAttribute="leading" secondItem="gBZ-VZ-a1N" secondAttribute="leading" id="hgi-4g-kU3"/>
+                            <constraint firstAttribute="trailing" secondItem="frO-ES-9HG" secondAttribute="trailing" id="zsq-9i-na7"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="scrollView" destination="frO-ES-9HG" id="ZlN-Du-3US"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Y78-vu-7h0" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2934" y="352"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="8US-lv-Rml">

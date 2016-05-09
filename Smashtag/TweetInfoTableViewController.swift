@@ -77,6 +77,7 @@ class TweetInfoTableViewController: UITableViewController {
         static let TweetUrlCellIdentifier = "Tweet Url"
         static let TweetUserSearchIdentifier = "Show User Search"
         static let TweetHashtagSearchIdentifier = "Show Hashtag Search"
+        static let TweetImageViewIdentifier = "Show Full Image"
     }
     
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
@@ -163,6 +164,11 @@ class TweetInfoTableViewController: UITableViewController {
                     destinationvc.searchText = tweet?.userMentions[(tableView.indexPathForSelectedRow?.row)!].keyword
                 default: break
                 }
+            }
+        } else if let destinationvc = segue.destinationViewController as? ImageViewController {
+            if segue.identifier == Storyboard.TweetImageViewIdentifier {
+                print("Displaying full image")
+                destinationvc.imageURL = tweet?.media[(tableView.indexPathForSelectedRow?.row)!].url
             }
         }
     }
