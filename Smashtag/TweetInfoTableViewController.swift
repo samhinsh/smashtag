@@ -97,16 +97,16 @@ class TweetInfoTableViewController: UITableViewController {
         return sectionSizes[ TweetTableSection(rawValue: section)! ]!
     }
     
-    //    override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-    //        if indexPath.section == 0 {
-    //            if let ratio = tweet?.media[indexPath.row].aspectRatio {
-    //                return CGFloat(ratio)
-    //            }
-    //        }
-    //
-    //        return UITableViewAutomaticDimension
-    //
-    //    }
+    override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        if indexPath.section == 0 {
+            if let ratio = tweet?.media[indexPath.row].aspectRatio {
+                return CGFloat(view.frame.width / CGFloat(ratio))
+            }
+        }
+        
+        return UITableViewAutomaticDimension
+        
+    }
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         if TweetTableSection(rawValue: indexPath.section) == .Urls {
