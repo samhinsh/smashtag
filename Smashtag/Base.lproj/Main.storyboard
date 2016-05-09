@@ -15,14 +15,14 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <textField key="tableHeaderView" opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Twitter Search Text" textAlignment="natural" minimumFontSize="17" id="FFh-1V-8aE">
-                            <rect key="frame" x="0.0" y="64" width="600" height="30"/>
+                            <rect key="frame" x="0.0" y="0.0" width="600" height="30"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <fontDescription key="fontDescription" type="system" pointSize="20"/>
                             <textInputTraits key="textInputTraits"/>
                         </textField>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Tweet" rowHeight="142" id="fWQ-nG-jbP" customClass="TweetTableViewCell" customModule="Smashtag" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="122" width="600" height="142"/>
+                                <rect key="frame" x="0.0" y="58" width="600" height="142"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="fWQ-nG-jbP" id="vCq-fE-rba">
                                     <rect key="frame" x="0.0" y="0.0" width="600" height="141.5"/>
@@ -287,7 +287,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Tweet Image" rowHeight="164" id="OZ3-PK-TQp" customClass="TweetImageTableViewCell" customModule="Smashtag" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="92" width="600" height="164"/>
+                                <rect key="frame" x="0.0" y="28" width="600" height="164"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="OZ3-PK-TQp" id="YBs-Xa-L5H">
                                     <rect key="frame" x="0.0" y="0.0" width="600" height="163.5"/>
@@ -310,7 +310,7 @@
                                 </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Tweet Hashtag" textLabel="y1F-fP-Eah" detailTextLabel="6k9-0j-2OH" style="IBUITableViewCellStyleValue1" id="sLt-ka-6zV">
-                                <rect key="frame" x="0.0" y="256" width="600" height="44"/>
+                                <rect key="frame" x="0.0" y="192" width="600" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="sLt-ka-6zV" id="AeJ-BE-eRJ">
                                     <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
@@ -337,7 +337,7 @@
                                 </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Tweet Mention" textLabel="2E3-bB-0bY" detailTextLabel="JLa-aj-D3o" style="IBUITableViewCellStyleValue1" id="X0k-yU-OKw">
-                                <rect key="frame" x="0.0" y="300" width="600" height="44"/>
+                                <rect key="frame" x="0.0" y="236" width="600" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="X0k-yU-OKw" id="Bdf-gQ-EbN">
                                     <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
@@ -364,7 +364,7 @@
                                 </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Tweet Url" textLabel="eeY-8B-zSR" detailTextLabel="ldy-ht-Fbh" style="IBUITableViewCellStyleValue1" id="oEc-FQ-gDa">
-                                <rect key="frame" x="0.0" y="344" width="600" height="44"/>
+                                <rect key="frame" x="0.0" y="280" width="600" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="oEc-FQ-gDa" id="UOS-sV-Rhn">
                                     <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>

@@ -7,9 +7,27 @@
 //
 
 import UIKit
+import CoreData
+import Twitter
 
-class SearchDetailTableViewController: UITableViewController {
+class SearchDetailTableViewController: CoreDataTableViewController {
 
+    var mentions: [Twitter.Mention]? { didSet { updateUI() } }
+    
+    private var managedObjectContext: NSManagedObjectContext? =
+        (UIApplication.sharedApplication().delegate as? AppDelegate)?.managedObjectContext
+    
+    private func updateUI() {
+        
+//        fetchedResultsController = NSFetchedResultsController(
+//        fetchRequest: <#T##NSFetchRequest#>,
+//        managedObjectContext: <#T##NSManagedObjectContext#>,
+//        sectionNameKeyPath: <#T##String?#>,
+//        cacheName: <#T##String?#>
+//        )
+        
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
