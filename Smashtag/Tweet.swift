@@ -17,20 +17,16 @@ class Tweet: NSManagedObject {
         // look in database for tweet
         let request = NSFetchRequest(entityName: "Tweet")
         request.predicate = NSPredicate(format: "id = %@ ", twitterInfo.id)
-        
         if let tweet = (try? context.executeFetchRequest(request))?.first as? Tweet {
-            return tweet
+            return tweet // return the tweet already existing in Core Data
+            
         } else if let tweet = NSEntityDescription.insertNewObjectForEntityForName("Tweet", inManagedObjectContext: context) as? Tweet { // create the db tweet
             tweet.id = twitterInfo.id
             tweet.text = twitterInfo.text
             tweet.created = twitterInfo.created
-            tweet.tweeter = // create the twitter user
+            tweet.tweeter = TwitterUser.twitterUserWithTwitterInfo(twitterInfo.user, inManagedObjectContext: context) // create or return the twitter user from Core Data
+            return tweet
         }
-        
-        // if it exists, update it
-        
-        // if not, create it
-        
         return nil
     }
     
