@@ -227,15 +227,9 @@ class TweetTableViewController: UITableViewController, UITextFieldDelegate {
     private struct Storyboard {
         static let TweetCellIdentifier = "Tweet"
         static let TweetInfoSegue = "Show TweetInfo"
-        static let SearchDetailSegue = "Show Search Detail"
     }
     
     // MARK: - TableView Delegate Methods
-    
-    override func tableView(tableView: UITableView, accessoryButtonTappedForRowWithIndexPath indexPath: NSIndexPath) {
-        tableView.selectRowAtIndexPath(indexPath, animated: false, scrollPosition: .None)
-        performSegueWithIdentifier(Storyboard.SearchDetailSegue, sender: self)
-    }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier(Storyboard.TweetCellIdentifier, forIndexPath: indexPath)
@@ -278,12 +272,6 @@ class TweetTableViewController: UITableViewController, UITextFieldDelegate {
                         tweets[tableView.indexPathForSelectedRow!.section][tableView.indexPathForSelectedRow!.row]
                     
                 default: break
-                }
-            }
-        } else if let searchDetailvc = segue.destinationViewController as? SearchDetailTableViewController {
-            if let identifier = segue.identifier {
-                if identifier == Storyboard.SearchDetailSegue {
-                    // TODO prepare search detail segue
                 }
             }
         }
