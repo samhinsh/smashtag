@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		C21563C31CE07A0F009277A3 /* ImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C21563C21CE07A0F009277A3 /* ImageViewController.swift */; };
-		C21563C61CE0E6C3009277A3 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = C21563C41CE0E6C3009277A3 /* Model.xcdatamodeld */; };
 		C21563CB1CE0F28F009277A3 /* Tweet+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = C21563C71CE0F28F009277A3 /* Tweet+CoreDataProperties.swift */; };
 		C21563CC1CE0F28F009277A3 /* Tweet.swift in Sources */ = {isa = PBXBuildFile; fileRef = C21563C81CE0F28F009277A3 /* Tweet.swift */; };
 		C21563CD1CE0F28F009277A3 /* TwitterUser+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = C21563C91CE0F28F009277A3 /* TwitterUser+CoreDataProperties.swift */; };
@@ -43,7 +42,6 @@
 
 /* Begin PBXFileReference section */
 		C21563C21CE07A0F009277A3 /* ImageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageViewController.swift; sourceTree = "<group>"; };
-		C21563C51CE0E6C3009277A3 /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
 		C21563C71CE0F28F009277A3 /* Tweet+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Tweet+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		C21563C81CE0F28F009277A3 /* Tweet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tweet.swift; sourceTree = "<group>"; };
 		C21563C91CE0F28F009277A3 /* TwitterUser+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "TwitterUser+CoreDataProperties.swift"; sourceTree = "<group>"; };
@@ -78,11 +76,12 @@
 		C21563CF1CE0F3B9009277A3 /* Core Data */ = {
 			isa = PBXGroup;
 			children = (
+				C21563D11CE11AFE009277A3 /* CoreDataTableViewController.swift */,
 				C21563C71CE0F28F009277A3 /* Tweet+CoreDataProperties.swift */,
 				C21563C81CE0F28F009277A3 /* Tweet.swift */,
 				C21563C91CE0F28F009277A3 /* TwitterUser+CoreDataProperties.swift */,
 				C21563CA1CE0F28F009277A3 /* TwitterUser.swift */,
-				C21563C41CE0E6C3009277A3 /* Model.xcdatamodeld */,
+				C2FF8A171CDA6CBC009BE0CC /* Smashtag.xcdatamodeld */,
 			);
 			name = "Core Data";
 			sourceTree = "<group>";
@@ -90,7 +89,6 @@
 		C21563D01CE0F3EB009277A3 /* MVC */ = {
 			isa = PBXGroup;
 			children = (
-				C21563D11CE11AFE009277A3 /* CoreDataTableViewController.swift */,
 				C2FF8A301CDA8136009BE0CC /* TweetTableViewCell.swift */,
 				C2FF8A2A1CDA6E46009BE0CC /* TweetTableViewController.swift */,
 				C2FF8A341CDAA650009BE0CC /* TweetInfoTableViewCells.swift */,
@@ -135,7 +133,6 @@
 				C2FF8A1A1CDA6CBC009BE0CC /* Assets.xcassets */,
 				C2FF8A1C1CDA6CBC009BE0CC /* LaunchScreen.storyboard */,
 				C2FF8A1F1CDA6CBC009BE0CC /* Info.plist */,
-				C2FF8A171CDA6CBC009BE0CC /* Smashtag.xcdatamodeld */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -218,7 +215,6 @@
 				C21563CE1CE0F28F009277A3 /* TwitterUser.swift in Sources */,
 				C2FF8A351CDAA650009BE0CC /* TweetInfoTableViewCells.swift in Sources */,
 				C2FF8A191CDA6CBC009BE0CC /* Smashtag.xcdatamodeld in Sources */,
-				C21563C61CE0E6C3009277A3 /* Model.xcdatamodeld in Sources */,
 				C21563C31CE07A0F009277A3 /* ImageViewController.swift in Sources */,
 				C2FF8A331CDAA619009BE0CC /* TweetInfoTableViewController.swift in Sources */,
 				C2FF8A111CDA6CBC009BE0CC /* AppDelegate.swift in Sources */,
@@ -382,16 +378,6 @@
 /* End XCConfigurationList section */
 
 /* Begin XCVersionGroup section */
-		C21563C41CE0E6C3009277A3 /* Model.xcdatamodeld */ = {
-			isa = XCVersionGroup;
-			children = (
-				C21563C51CE0E6C3009277A3 /* Model.xcdatamodel */,
-			);
-			currentVersion = C21563C51CE0E6C3009277A3 /* Model.xcdatamodel */;
-			path = Model.xcdatamodeld;
-			sourceTree = "<group>";
-			versionGroupType = wrapper.xcdatamodel;
-		};
 		C2FF8A171CDA6CBC009BE0CC /* Smashtag.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (

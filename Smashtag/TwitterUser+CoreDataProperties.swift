@@ -14,8 +14,8 @@ import CoreData
 
 extension TwitterUser {
 
-    @NSManaged var screenName: String?
     @NSManaged var name: String?
+    @NSManaged var screenName: String?
     @NSManaged var tweets: NSSet?
 
 }

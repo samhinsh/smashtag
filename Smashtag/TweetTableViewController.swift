@@ -24,6 +24,7 @@ class TweetTableViewController: UITableViewController, UITextFieldDelegate {
     var searchText: String? {
         didSet {
             tweets.removeAll()
+            lastTwitterRequest = nil
             searchForTweets()
             title = searchText
         }
@@ -58,32 +59,40 @@ class TweetTableViewController: UITableViewController, UITextFieldDelegate {
                             // as opposed to a strong pointer which would keep self in the heap even if user left the screen
                             weakSelf?.tweets.insert(newTweets, atIndex: 0) // add new tweets to beginning of table
                             // more: if newTeets comes back and self has left the heap, this will just be ignored
+                            weakSelf?.updateDatabase(newTweets)
                         }
                     }
+                    weakSelf?.refreshControl?.endRefreshing()
                 }
-                weakSelf?.refreshControl?.endRefreshing()
             }
         } else {
             self.refreshControl?.endRefreshing()
         }
     }
     
-    // if tweet in db, does nothing; places in Core Data otherwise
     private func updateDatabase(newTweets: [Twitter.Tweet]) {
         managedObjectContext?.performBlock {
-            // put tweets in database
             for twitterInfo in newTweets {
-                // create new, unique Tweet in database with twitter info
-                _ = Tweet.tweetWithTwitterInfo(twitterInfo, inManagedObjectContext: self.managedObjectContext!) // _ = return value, but I don't care about it (good style)
+                // the _ = just lets readers of our code know
+                // that we are intentionally ignoring the return value
+                _ = Tweet.tweetWithTwitterInfo(twitterInfo, inManagedObjectContext: self.managedObjectContext!)
             }
+            // there is a method in AppDelegate
+            // which will save the context as well
+            // but we're just showing how to save and catch any error here
             do {
                 try self.managedObjectContext?.save()
             } catch let error {
-                print("Core Data Save Error: \(error)")
+                print("Core Data Error: \(error)")
             }
         }
         printDatabaseStatistics()
-        print("Done printing database statistics")
+        // note that even though we do this print()
+        // AFTER printDatabaseStatistics() is called
+        // it will print BEFORE because printDatabaseStatistics()
+        // returns immediately after putting a closure on the context's queue
+        // (that closure then runs sometime later, after this print())
+        print("done printing database statistics")
     }
     
     private func printDatabaseStatistics() {

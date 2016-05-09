@@ -26,5 +26,4 @@ class TwitterUser: NSManagedObject {
         }
         return nil
     }
-
 }
