@@ -8,26 +8,29 @@
 
 import Foundation
 import CoreData
-
+import Twitter
 
 class Mention: NSManagedObject {
     
-    /*
-    class func tweetWithTwitterInfo(twitterInfo: Twitter.Tweet, inManagedObjectContext context: NSManagedObjectContext) -> Tweet? {
-        // look in database for tweet
-        let request = NSFetchRequest(entityName: "Tweet")
-        request.predicate = NSPredicate(format: "id = %@ ", twitterInfo.id)
-        if let tweet = (try? context.executeFetchRequest(request))?.first as? Tweet {
-            return tweet // return the tweet already existing in Core Data
+    //
+    class func tweetWithTwitterInfo(twitterInfo: Twitter.Mention, parentTweet: Tweet,  mentionType: String, inManagedObjectContext context: NSManagedObjectContext) -> Mention? {
+        // look in the database for this mention (a mention with this name (i.e. mentionName == #stanford, or mentionName == @Dan)
+        let request = NSFetchRequest(entityName: "Mention")
+        request.predicate = NSPredicate(format: "mentionName = %@ ", twitterInfo.keyword) // return only mentions with this name (should only be one)
+        if let mention = (try? context.executeFetchRequest(request))?.first as? Mention { // found the mention in Core Data
             
-        } else if let tweet = NSEntityDescription.insertNewObjectForEntityForName("Tweet", inManagedObjectContext: context) as? Tweet { // create the db tweet
-            tweet.id = twitterInfo.id
-            tweet.text = twitterInfo.text
-            tweet.created = twitterInfo.created
-            tweet.tweeter = TwitterUser.twitterUserWithTwitterInfo(twitterInfo.user, inManagedObjectContext: context) // create or return the twitter user from Core Data
-            return tweet
+            mention.refCount = NSNumber(int: (mention.refCount?.intValue)! + 1) // update refCount for this mention
+            return mention // return the mention already existing in Core Data
+            
+        // create the Core Data mention
+        } else if let mention = NSEntityDescription.insertNewObjectForEntityForName("Mention", inManagedObjectContext: context) as? Mention {
+            mention.mentionName = twitterInfo.keyword
+            mention.mentionType = mentionType
+            mention.refCount = 0;
+            mention.parentTweets = mention.parentTweets?.setByAddingObject(parentTweet) // add the mention-tweet relationship
+            return mention
         }
         return nil
-    }*/
+    }
 
 }

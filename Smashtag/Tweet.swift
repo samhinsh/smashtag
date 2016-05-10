@@ -12,8 +12,12 @@ import Twitter
 
 
 class Tweet: NSManagedObject {
-
+    
     class func tweetWithTwitterInfo(twitterInfo: Twitter.Tweet, inManagedObjectContext context: NSManagedObjectContext) -> Tweet? {
+        
+        let userMentionType = "userMention"
+        let hashtagMentionType = "hashtagMention"
+        
         // look in database for tweet
         let request = NSFetchRequest(entityName: "Tweet")
         request.predicate = NSPredicate(format: "id = %@ ", twitterInfo.id)
@@ -24,6 +28,19 @@ class Tweet: NSManagedObject {
             tweet.id = twitterInfo.id
             tweet.text = twitterInfo.text
             tweet.created = twitterInfo.created
+            
+            // add all related userMentions
+            for userMention in twitterInfo.userMentions {
+                _ = Mention.tweetWithTwitterInfo(userMention, parentTweet: tweet, mentionType: userMentionType, inManagedObjectContext: context)
+            }
+            
+            // add all related hashtag mentions
+            for hashtag in twitterInfo.hashtags {
+                _ = Mention.tweetWithTwitterInfo(hashtag, parentTweet: tweet, mentionType: hashtagMentionType, inManagedObjectContext: context)
+            }
+            
+            
+            // add the tweet-tweeter relationship
             tweet.tweeter = TwitterUser.twitterUserWithTwitterInfo(twitterInfo.user, inManagedObjectContext: context) // create or return the twitter user from Core Data
             return tweet
         }
