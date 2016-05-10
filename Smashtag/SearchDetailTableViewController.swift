@@ -10,6 +10,8 @@ import UIKit
 import CoreData
 import Twitter
 
+/* Attn: Did Extra Credit Item #2 */
+
 class SearchDetailTableViewController: CoreDataTableViewController {
     
     var mentionSearch: String? { didSet { updateUI() } }
@@ -28,7 +30,7 @@ class SearchDetailTableViewController: CoreDataTableViewController {
             fetchedResultsController = NSFetchedResultsController(
                 fetchRequest: request,
                 managedObjectContext: managedObjectContext!,
-                sectionNameKeyPath: nil,
+                sectionNameKeyPath: "mentionType",
                 cacheName: nil
             )
         }
