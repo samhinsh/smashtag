@@ -61,20 +61,6 @@ class SearchDetailTableViewController: CoreDataTableViewController {
         return cell
     }
     
-    // private func which figures out how many mentions
-    // correspond to this search
-    
-//    private func tweetCountWithMentionByTwitterUser(mention: Mention) -> Int?
-//    {
-//        var count: Int?
-//        mention.managedObjectContext?.performBlockAndWait {
-//            let request = NSFetchRequest(entityName: "Mention")
-//            request.predicate = NSPredicate(format: "text contains[c] %@ and tweeter = %@", self.mention!, user)
-//            count = user.managedObjectContext?.countForFetchRequest(request, error: nil)
-//        }
-//        return count
-//    }
-    
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
         updateUI()
@@ -83,12 +69,7 @@ class SearchDetailTableViewController: CoreDataTableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         updateUI()
-        
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-        
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
+
     }
     
 }
