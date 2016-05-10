@@ -26,7 +26,7 @@ class Mention: NSManagedObject {
         } else if let mention = NSEntityDescription.insertNewObjectForEntityForName("Mention", inManagedObjectContext: context) as? Mention {
             mention.mentionName = twitterInfo.keyword
             mention.mentionType = mentionType
-            mention.refCount = 0;
+            mention.refCount = 1;
             mention.parentTweets = mention.parentTweets?.setByAddingObject(parentTweet) // add the mention-tweet relationship
             return mention
         }

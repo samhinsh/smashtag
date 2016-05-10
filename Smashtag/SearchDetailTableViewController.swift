@@ -41,19 +41,21 @@ class SearchDetailTableViewController: CoreDataTableViewController {
         
         if let mention = fetchedResultsController?.objectAtIndexPath(indexPath) as? Mention {
             var mentionName: String?
+            var mentionRefCount: NSNumber?
             mention.managedObjectContext?.performBlockAndWait {
                 // it's easy to forget to do this on the proper queue
                 mentionName = mention.mentionName
+                mentionRefCount = mention.refCount
                 // we're not assuming the context is a main queue context
                 // so we'll grab the screenName and return to the main queue
                 // to do the cell.textLabel?.text setting
             }
             cell.textLabel?.text = mentionName
-//            if let count = tweetCountWithMentionByTwitterUser(twitterUser) {
-//                cell.detailTextLabel?.text = (count == 1) ? "1 tweet" : "\(count) tweets"
-//            } else {
-//                cell.detailTextLabel?.text = ""
-//            }
+            if let count = mentionRefCount?.intValue { // tweetCountWithMentionByTwitterUser(mention) {
+                cell.detailTextLabel?.text = (count == 1) ? "1 mention" : "\(count) mentions"
+            } else {
+                cell.detailTextLabel?.text = ""
+            }
         }
         
         return cell
@@ -62,11 +64,11 @@ class SearchDetailTableViewController: CoreDataTableViewController {
     // private func which figures out how many mentions
     // correspond to this search
     
-//    private func tweetCountWithMentionByTwitterUser(user: TwitterUser) -> Int?
+//    private func tweetCountWithMentionByTwitterUser(mention: Mention) -> Int?
 //    {
 //        var count: Int?
-//        user.managedObjectContext?.performBlockAndWait {
-//            let request = NSFetchRequest(entityName: "Tweet")
+//        mention.managedObjectContext?.performBlockAndWait {
+//            let request = NSFetchRequest(entityName: "Mention")
 //            request.predicate = NSPredicate(format: "text contains[c] %@ and tweeter = %@", self.mention!, user)
 //            count = user.managedObjectContext?.countForFetchRequest(request, error: nil)
 //        }
