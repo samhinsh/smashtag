@@ -84,9 +84,9 @@
 		C21563CF1CE0F3B9009277A3 /* Core Data */ = {
 			isa = PBXGroup;
 			children = (
+				C21563D11CE11AFE009277A3 /* CoreDataTableViewController.swift */,
 				C2B71FCE1CE1607E00F68A74 /* Mention+CoreDataProperties.swift */,
 				C2B71FCF1CE1607E00F68A74 /* Mention.swift */,
-				C21563D11CE11AFE009277A3 /* CoreDataTableViewController.swift */,
 				C21563C71CE0F28F009277A3 /* Tweet+CoreDataProperties.swift */,
 				C21563C81CE0F28F009277A3 /* Tweet.swift */,
 				C21563C91CE0F28F009277A3 /* TwitterUser+CoreDataProperties.swift */,

@@ -131,6 +131,9 @@ class TweetTableViewController: UITableViewController, UITextFieldDelegate {
             
             let tweetCount = self.managedObjectContext!.countForFetchRequest(NSFetchRequest(entityName: "Tweet"), error: nil)
             print("\(tweetCount) Tweets") // efficient way to count objects
+            
+            let mentionCount = self.managedObjectContext!.countForFetchRequest(NSFetchRequest(entityName: "Mention"), error: nil)
+            print("\(mentionCount) Mentions") // efficient way to count objects
         }
     }
     

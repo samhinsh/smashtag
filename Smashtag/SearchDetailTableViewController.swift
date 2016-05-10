@@ -11,103 +11,82 @@ import CoreData
 import Twitter
 
 class SearchDetailTableViewController: CoreDataTableViewController {
-
-    var mentions: [Twitter.Mention]? { didSet { updateUI() } }
+    
+    var mentionSearch: String? { didSet { updateUI() } }
     
     private var managedObjectContext: NSManagedObjectContext? =
         (UIApplication.sharedApplication().delegate as? AppDelegate)?.managedObjectContext
     
     private func updateUI() {
         
-//        fetchedResultsController = NSFetchedResultsController(
-//        fetchRequest: <#T##NSFetchRequest#>,
-//        managedObjectContext: <#T##NSManagedObjectContext#>,
-//        sectionNameKeyPath: <#T##String?#>,
-//        cacheName: <#T##String?#>
-//        )
+        if let mentionSearchTerm = mentionSearch {
+            
+            let request = NSFetchRequest(entityName: "Mention")
+            request.predicate = NSPredicate(format: "mentionName contains[c] %@", mentionSearchTerm)
+            request.sortDescriptors = [NSSortDescriptor(key: "refCount", ascending: false)]
+            
+            fetchedResultsController = NSFetchedResultsController(
+                fetchRequest: request,
+                managedObjectContext: managedObjectContext!,
+                sectionNameKeyPath: nil,
+                cacheName: nil
+            )
+        }
         
+    }
+    
+    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        
+        let cell = tableView.dequeueReusableCellWithIdentifier("Mentions", forIndexPath: indexPath)
+        
+        if let mention = fetchedResultsController?.objectAtIndexPath(indexPath) as? Mention {
+            var mentionName: String?
+            mention.managedObjectContext?.performBlockAndWait {
+                // it's easy to forget to do this on the proper queue
+                mentionName = mention.mentionName
+                // we're not assuming the context is a main queue context
+                // so we'll grab the screenName and return to the main queue
+                // to do the cell.textLabel?.text setting
+            }
+            cell.textLabel?.text = mentionName
+//            if let count = tweetCountWithMentionByTwitterUser(twitterUser) {
+//                cell.detailTextLabel?.text = (count == 1) ? "1 tweet" : "\(count) tweets"
+//            } else {
+//                cell.detailTextLabel?.text = ""
+//            }
+        }
+        
+        return cell
+    }
+    
+    // private func which figures out how many mentions
+    // correspond to this search
+    
+//    private func tweetCountWithMentionByTwitterUser(user: TwitterUser) -> Int?
+//    {
+//        var count: Int?
+//        user.managedObjectContext?.performBlockAndWait {
+//            let request = NSFetchRequest(entityName: "Tweet")
+//            request.predicate = NSPredicate(format: "text contains[c] %@ and tweeter = %@", self.mention!, user)
+//            count = user.managedObjectContext?.countForFetchRequest(request, error: nil)
+//        }
+//        return count
+//    }
+    
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        updateUI()
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        updateUI()
+        
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
-
+        
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-
-    // MARK: - Table view data source
-
-    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 0
-    }
-
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        return 0
-    }
-
-    /*
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("reuseIdentifier", forIndexPath: indexPath)
-
-        // Configure the cell...
-
-        return cell
-    }
-    */
-
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
-    }
-    */
-
-    /*
-    // Override to support editing the table view.
-    override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
-        if editingStyle == .Delete {
-            // Delete the row from the data source
-            tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
-        } else if editingStyle == .Insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
-    }
-    */
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(tableView: UITableView, moveRowAtIndexPath fromIndexPath: NSIndexPath, toIndexPath: NSIndexPath) {
-
-    }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(tableView: UITableView, canMoveRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
+    
 }

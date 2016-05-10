@@ -72,7 +72,7 @@ class MostRecentSearchesTableViewController: UITableViewController {
                 }
             case Storyboard.SearchDetailSegue:
                 if let searchDetailvc = segue.destinationViewController as? SearchDetailTableViewController {
-                    // TODO prepare search detail segue
+                    searchDetailvc.mentionSearch = storedTwitterSearches[(tableView.indexPathForSelectedRow?.row)! ] // prepare search detail segue
                 }
             default: break
             }
