@@ -151,60 +151,6 @@ class TweetTableViewController: UITableViewController, UITextFieldDelegate {
         // set row heights to be dynamic
         tableView.estimatedRowHeight = tableView.rowHeight
         tableView.rowHeight = UITableViewAutomaticDimension
-        
-        // for interacting with Model.xcdatamodeld
-        //        var manageObjectContext: NSManagedObjectContext? = (UIApplication.sharedApplication().delegate as? AppDelegate)?.managedObjectContext
-        
-        // Mark: - Database Functions
-        //        do {
-        //            try context.save(
-        //        )
-        //        } catch let error {
-        //            throw error // must say that func throws if used
-        //        }
-        
-        //        if let tweet = NSEntityDescription.insertNewObjectForEntityForName("Tweet", isManagedObjectContext: context) as? Tweet {
-        //            tweet.text =
-        //            tweet.created =
-        //            tweet.tweeter =
-        //            tweet.tweeter.name =
-        //        }
-        
-        //        context.deleteObject(tweet) // make sure no strong pointers to tweet after deletion, delete set by delete rule in attributes editor
-        
-        // Querying: retreiving objects from a database
-        // Done with Core Data by making NSFetchRequest in NSManagedObjectContext
-        // 1) Only fetch ONE thing (i.e. tweet or twitterUser)
-        // 2) Define how many, or maximmum number to get
-        // 3) Use NSSortDescriptors list to specify the order in the array of which fetched objects are returned
-        // 4) Use NSPredicate to specify which of those Entities to fetch (i.e. tweets created since yesterday)
-        // You'd use an array of sort descriptors to sort first by one method, then by another within that same sort
-        
-        //        let sortDescriptor = NSSortDescriptor(
-        //            key: "text" /*or "created" to sort by that attribute name */, ascending: <#T##Bool#>, selector: "localizedStandardCompate:" /* for user-interested alphabetically order; i.e. sorting like the Finder */
-        //        )
-        
-        //        let users = try? context.executeFetchRequest(request)
-        // try? will execute and if error thrown, return nil
-        // otherwise returns empty array (not nil) on no matches in database
-        // or returns Array of NSManagedObjects
-        
-        // NSManagedObjectContext is not thread-safe
-        // thread-safety is done by having each NSManagedObjectContext live on its own queue
-        // Thread-safe access to NSMO:
-        // contex.performBlock {} // or performBlockAndWait, should be done for all calls to NSMO, even in non-multithreaded (costs no resources)
-        
-        // NSFetchedResultsController to UITableViewController
-        //        override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        //            let cell = tableView.dequeue_
-        //
-        //            let object = fetchedResultsController.objectAtIndexPath(indexPath) as? Tweet {
-        //                // load the cell based on properties of the obj
-        //            }
-        //
-        //            return // the cell
-        //        }
-        //
     }
     
     override func didReceiveMemoryWarning() {

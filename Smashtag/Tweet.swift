@@ -47,9 +47,11 @@ class Tweet: NSManagedObject {
         return nil
     }
     
+    /*
     override func prepareForDeletion() {
         // don't need to set tweeter to nil, done automatically
         // but could do something, like decrement the tweeters tweetcount: tweeter.tweetCount--
     }
+    */
 
 }
