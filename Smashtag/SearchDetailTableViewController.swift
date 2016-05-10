@@ -22,7 +22,7 @@ class SearchDetailTableViewController: CoreDataTableViewController {
         if let mentionSearchTerm = mentionSearch {
             
             let request = NSFetchRequest(entityName: "Mention")
-            request.predicate = NSPredicate(format: "mentionName contains[c] %@", mentionSearchTerm)
+            request.predicate = NSPredicate(format: "mentionName contains[c] %@ and refCount > 1", mentionSearchTerm)
             request.sortDescriptors = [NSSortDescriptor(key: "refCount", ascending: false)]
             
             fetchedResultsController = NSFetchedResultsController(
